@@ -1,0 +1,10 @@
+*.csv
+*.json
+*.tmp
+*.bak
+*.old
+*.new
+*test*
+env/
+logs/
+__*__/
