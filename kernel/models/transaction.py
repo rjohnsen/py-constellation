@@ -1,26 +1,19 @@
-from kernel.lib.graphconstants import GraphConstants
+from kernel.constants.graphconstants import GraphConstants
+from kernel.constants.transaction import Transaction as TRCon
+from kernel.models.nodeparent import NodeParent
 
-class Transaction:
+class Transaction(NodeParent):
     def __init__(self, annotation: str):
-        self.annotation = annotation
-        self.structure = {
-            GraphConstants.DATETIME: None,
-            GraphConstants.IDENTIFIER: None,
-            GraphConstants.SOURCE: None,
-            GraphConstants.TYPE: None,
-            GraphConstants.ACTIVITY: None,
-            GraphConstants.LABEL: None,
-            GraphConstants.COLOR: None,
-            GraphConstants.DIM: None,
-            GraphConstants.DIRECTED: None,
-            GraphConstants.LAYER_MASK: None,
-            GraphConstants.LAYER_VISIBILITY: None,
-            GraphConstants.LINE_STYLE: None,
-            GraphConstants.SELECTED: None,
-            GraphConstants.VISIBILITY: None,
-            GraphConstants.WIDTH: None,
-            GraphConstants.__DIRECTED__: None
-        }
+        super().__init__(
+            annotation,
+            [
+                GraphConstants.DATETIME,
+                GraphConstants.ACTIVITY,
+                GraphConstants.DIRECTED,
+                GraphConstants.LINE_STYLE,
+                GraphConstants.WIDTH
+            ]
+        )
 
     @property
     def datetime(self):
@@ -30,68 +23,14 @@ class Transaction:
     def datetime(self, value):
         self.structure[GraphConstants.DATETIME] = value
         return self
-    
-    @property
-    def identifier(self):
-        return self.structure[graphconstants.IDENTIFIER]
-
-    @identifier.setter
-    def identifier(self, value):
-        self.structure[GraphConstants.IDENTIFIER] = value
-        return self
-
-    @property
-    def source(self):
-        return self.structure[graphconstants.SOURCE]
-
-    @source.setter
-    def source(self, value):
-        self.structure[GraphConstants.SOURCE] = value
-        return self
-
-    @property
-    def type(self):
-        return self.structure[graphconstants.TYPE]
-
-    @type.setter
-    def type(self, value):
-        self.structure[GraphConstants.TYPE] = value
-        return self
 
     @property
     def activity(self):
         return self.structure[graphconstants.ACTIVITY]
 
     @activity.setter
-    def activity(self, value):
+    def activity(self, value: str):
         self.structure[GraphConstants.ACTIVITY] = value
-        return self
-
-    @property
-    def label(self):
-        return self.structure[graphconstants.LABEL]
-
-    @label.setter
-    def label(self, value):
-        self.structure[GraphConstants.LABEL] = value
-        return self
-    
-    @property
-    def color(self):
-        return self.structure[graphconstants.COLOR]
-
-    @color.setter
-    def color(self, value):
-        self.structure[GraphConstants.COLOR] = value
-        return self
-
-    @property
-    def dim(self):
-        return self.structure[graphconstants.DIM]
-
-    @dim.setter
-    def dim(self, value):
-        self.structure[GraphConstants.DIM] = value
         return self
 
     @property
@@ -104,48 +43,12 @@ class Transaction:
         return self
 
     @property
-    def layer_mask(self):
-        return self.structure[graphconstants.LAYER_MASK]
-
-    @layer_mask.setter
-    def layer_mask(self, value):
-        self.structure[GraphConstants.LAYER_MASK] = value
-        return self
-
-    @property
-    def layer_visibility(self):
-        return self.structure[graphconstants.LAYER_VISIBILITY]
-
-    @layer_visibility.setter
-    def layer_visibility(self, value):
-        self.structure[GraphConstants.LAYER_VISIBILITY] = value
-        return self
-
-    @property
     def line_style(self):
         return self.structure[graphconstants.LINE_STYLE]
 
     @line_style.setter
-    def line_style(self, value):
+    def line_style(self, value: str):
         self.structure[GraphConstants.LINE_STYLE] = value
-        return self
-    
-    @property
-    def selected(self):
-        return self.structure[graphconstants.SELECTED]
-
-    @selected.setter
-    def selected(self, value):
-        self.structure[GraphConstants.SELECTED] = value
-        return self
-
-    @property
-    def visibility(self):
-        return self.structure[graphconstants.VISIBILITY]
-
-    @visibility.setter
-    def visibility(self, value):
-        self.structure[GraphConstants.VISIBILITY] = value
         return self
 
     @property
@@ -156,15 +59,3 @@ class Transaction:
     def width(self, value):
         self.structure[GraphConstants.WIDTH] = value
         return self
-
-    def add_property(self, name: str, value: str) -> bool:
-        if name in self.structure.keys():
-            return False
-
-        self.structure[name] = value
-
-        return True
-
-    def compress(self) -> dict:
-        compressed = {key: value for key, value in self.structure.items() if value is not None}
-        return {f"{self.annotation}." + str(key): val for key, val in compressed.items()}
