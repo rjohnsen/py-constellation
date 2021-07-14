@@ -1,21 +1,42 @@
-from kernel.models.graphcsv import GraphCSV
+"""
+Demo DNS log parser
 
+A demo on how to parse DNS log into Constellation-app supported CSV
+"""
+
+# pylint: disable=E0401
+
+import ipaddress
+import csv
+from tqdm import tqdm
+from kernel.models.graphcsv import GraphCSV
 from kernel.nodes.models import Node, Transaction
 from kernel.constants.transaction import Transaction as TRCon
 from kernel.lib.icons import Icons
 
-from tqdm import tqdm
+def set_icon(ip_addr: str) -> str:
+    """
+    Set icon for IP
 
-import ipaddress
-import csv
+    Parameters:
+    value (str): IP
 
-def set_icon(ip: str) -> str:
-    if ipaddress.ip_address(ip).is_global:
+    Returns:
+    str:Icon name
+    """
+
+    if ipaddress.ip_address(ip_addr).is_global:
         return Icons.SERVER
-    
+
     return Icons.LAPTOP
 
 def run(log_path: str):
+    """
+    Run parser
+
+    Parameters:
+    value (str): Path to log
+    """
     with open(log_path, "r") as log_file:
         graphcsv = GraphCSV()
         reader = csv.reader(log_file, delimiter="\t")
@@ -25,17 +46,12 @@ def run(log_path: str):
         print(f"Processing '{log_path}'\n")
 
         for line in tqdm(reader):
-            #
             # Prepare variables for easy access
-            # 
             source_ip = line[2]
             destination_ip = line[4]
             protocol = line[6]
-            dns_req = line[5]
 
-            #
             # Source node
-            # 
             source_node = Node("src")
             source_node.source = "Imported"
             source_node.label = source_ip
@@ -44,9 +60,7 @@ def run(log_path: str):
             source_node.raw = f'{source_node.identifier} <Network>'
             source_node.color = "blue"
 
-            #
             # Destination node
-            #
             destination_node = Node("dst")
             destination_node.source = "Imported"
             destination_node.label = destination_ip
@@ -55,18 +69,15 @@ def run(log_path: str):
             destination_node.raw = f'{destination_node.identifier} <Network>'
             destination_node.color = "orange"
 
-            # 
             # Transactions
-            # 
             transaction = Transaction("trans")
             transaction.label = protocol
             transaction.directed = True
             transaction.type = "Network"
             transaction.line_style = TRCon.LINE_STYLE_DOTTED
             transaction.color = "green"
-            #
+
             # Connect the graph
-            # 
             graphcsv.append_nodeset(
                 source_node,
                 destination_node,
