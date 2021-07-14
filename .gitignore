@@ -9,3 +9,4 @@ env/
 logs/
 __*__/
 dist/
+*egg-info/
