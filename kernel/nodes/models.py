@@ -99,18 +99,14 @@ class NodeParent:
         return self.__identifier
 
     @identifier.setter
-    def identifier(self, value: str) -> NodeParent:
+    def identifier(self, value: str):
         """
         Set node identifer
 
         Parameters:
         value (str): Identifier
-
-        Returns:
-        NodeParent:Returning self
         """
         self.__identifier = value
-        return self
 
     @property
     def type(self) -> str:
@@ -123,18 +119,14 @@ class NodeParent:
         return self.__type
 
     @type.setter
-    def type(self, value: str) -> NodeParent:
+    def type(self, value: str):
         """
         Set node identifer
 
         Parameters:
         value (str): Identifier
-
-        Returns:
-        NodeParent:Returning self
         """
         self.__type = value
-        return self
 
     @property
     def source(self) -> str:
@@ -147,18 +139,14 @@ class NodeParent:
         return self.__source
 
     @source.setter
-    def source(self, value: str) -> NodeParent:
+    def source(self, value: str):
         """
         Set node source
 
         Parameters:
         value (str): Source
-
-        Returns:
-        NodeParent:Returning self
         """
         self.__source = value
-        return self
 
     @property
     def label(self) -> str:
@@ -171,18 +159,14 @@ class NodeParent:
         return self.__label
 
     @label.setter
-    def label(self, value: str) -> NodeParent:
+    def label(self, value: str):
         """
         Set node label
 
         Parameters:
         value (str): Label
-
-        Returns:
-        NodeParent:Returning self
         """
         self.__label = value
-        return self
 
     @property
     def color(self) -> str:
@@ -195,18 +179,14 @@ class NodeParent:
         return self.__color
 
     @color.setter
-    def color(self, value: str) -> NodeParent:
+    def color(self, value: str):
         """
         Set node color
 
         Parameters:
         value (str): Color string or HEX code
-
-        Returns:
-        NodeParent:Returning self
         """
         self.__color = value
-        return self
 
     @property
     def dim(self) -> bool:
@@ -219,18 +199,14 @@ class NodeParent:
         return self.__dim
 
     @dim.setter
-    def dim(self, value: bool) -> NodeParent:
+    def dim(self, value: bool):
         """
         Set node dim setting
 
         Parameters:
         value (bool): dim on/off
-
-        Returns:
-        NodeParent:Returning self
         """
         self.__dim = value
-        return self
 
     @property
     def layer_mask(self) -> float:
@@ -243,18 +219,14 @@ class NodeParent:
         return self.__layer_mask
 
     @layer_mask.setter
-    def layer_mask(self, value: float) -> NodeParent:
+    def layer_mask(self, value: float):
         """
         Set node layer_mask (bitmask identifying the layers this node belongs to)
 
         Parameters:
         value (float): Bitmask
-
-        Returns:
-        NodeParent:Returning self
         """
         self.__layer_mask = value
-        return self
 
     @property
     def visibility(self) -> float:
@@ -267,18 +239,14 @@ class NodeParent:
         return self.__visibility
 
     @visibility.setter
-    def visibility(self, value: float) -> NodeParent:
+    def visibility(self, value: float):
         """
         Get node visibility
 
         Parameters:
         value (float): Bitmask
-
-        Returns:
-        NodeParent:Returning self
         """
         self.__visibility = value
-        return self
 
     @property
     def selected(self) -> bool:
@@ -291,18 +259,14 @@ class NodeParent:
         return self.__selected
 
     @selected.setter
-    def selected(self, value: bool) -> NodeParent:
+    def selected(self, value: bool):
         """
         Set node visibility
 
         Parameters:
         value (bool): State
-
-        Returns:
-        NodeParent:Returning self
         """
         self.__selected = value
-        return self
 
     @property
     def layer_visibility(self) -> float:
@@ -322,12 +286,8 @@ class NodeParent:
 
         Parameters:
         value (float): Value
-
-        Returns:
-        NodeParent:Returning self
         """
         self.__layer_visibility = value
-        return self
 
 # pylint: disable=R0904,C0103,R0903
 class Node(NodeParent):
@@ -377,7 +337,6 @@ class Node(NodeParent):
         Node:Returning self
         """
         self.__raw = value
-        return self
 
     @property
     def background_icon(self) -> str:
@@ -390,18 +349,14 @@ class Node(NodeParent):
         return self.__background_icon
 
     @background_icon.setter
-    def background_icon(self, value: str) -> Node:
+    def background_icon(self, value: str):
         """
         Set background icon
 
         Parameters:
         value (str): Value
-
-        Returns:
-        Node:Returning self
         """
         self.__background_icon = value
-        return self
 
     @property
     def icon(self) -> str:
@@ -414,18 +369,14 @@ class Node(NodeParent):
         return self.__icon
 
     @icon.setter
-    def icon(self, value: str) -> Node:
+    def icon(self, value: str):
         """
         Set icon
 
         Parameters:
         value (str): Value
-
-        Returns:
-        Node:Returning self
         """
         self.__icon = value
-        return self
 
     @property
     def nradius(self) -> float:
@@ -438,18 +389,14 @@ class Node(NodeParent):
         return self.__nradius
 
     @nradius.setter
-    def nradius(self, value: float) -> Node:
+    def nradius(self, value: float):
         """
         Get nradius
 
         Parameters:
         value (float): Value
-
-        Returns:
-        Node:Returning self
         """
         self.__nradius = value
-        return self
 
     @property
     def pinned(self) -> bool:
@@ -462,18 +409,14 @@ class Node(NodeParent):
         return self.__pinned
 
     @pinned.setter
-    def pinned(self, value: bool) -> Node:
+    def pinned(self, value: bool):
         """
         Set pinned state
 
         Parameters:
         value (bool): Value
-
-        Returns:
-        Node:Returning self
         """
         self.__pinned = value
-        return self
 
     @property
     def x(self) -> float:
@@ -486,18 +429,14 @@ class Node(NodeParent):
         return self.__x
 
     @x.setter
-    def x(self, value: float) -> Node:
+    def x(self, value: float):
         """
         Set X coordinate
 
         Parameters:
         value (float): Value
-
-        Returns:
-        Node:Returning self
         """
         self.__x = value
-        return self
 
     @property
     def x2(self) -> float:
@@ -510,18 +449,14 @@ class Node(NodeParent):
         return self.__x2
 
     @x2.setter
-    def x2(self, value: float) -> Node:
+    def x2(self, value: float):
         """
         Set X2 coordinate
 
         Parameters:
         value (str): Value
-
-        Returns:
-        Node:Returning self
         """
         self.__x2 = value
-        return self
 
     @property
     def y(self) -> float:
@@ -534,18 +469,14 @@ class Node(NodeParent):
         return self.__y
 
     @y.setter
-    def y(self, value: float) -> Node:
+    def y(self, value: float):
         """
         Set Y coordinate
 
         Parameters:
         value (float): Value
-
-        Returns:
-        Node:Returning self
         """
         self.__y = value
-        return self
 
     @property
     def y2(self) -> float:
@@ -558,18 +489,14 @@ class Node(NodeParent):
         return self.__y2
 
     @y2.setter
-    def y2(self, value: float) -> Node:
+    def y2(self, value: float):
         """
         Set Y2 coordinate
 
         Parameters:
         value (float): Value
-
-        Returns:
-        Node:Returning self
         """
         self.__y2 = value
-        return self
 
     @property
     def z(self) -> float:
@@ -582,18 +509,14 @@ class Node(NodeParent):
         return self.__z
 
     @z.setter
-    def z(self, value: float) -> Node:
+    def z(self, value: float):
         """
         Set Z coordinate
 
         Parameters:
         value (float): Value
-
-        Returns:
-        Node:Returning self
         """
         self.__z = value
-        return self
 
     @property
     def z2(self) -> float:
@@ -606,18 +529,14 @@ class Node(NodeParent):
         return self.__z2
 
     @z2.setter
-    def z2(self, value: float) -> Node:
+    def z2(self, value: float):
         """
         Set Z2 coordinate
 
         Parameters:
         value (float): Value
-
-        Returns:
-        Node:Returning self
         """
         self.__z2 = value
-        return self
 
 class Transaction(NodeParent):
     """
@@ -649,18 +568,14 @@ class Transaction(NodeParent):
         return self.__datetime
 
     @datetime.setter
-    def datetime(self, value: str) -> Transaction:
+    def datetime(self, value: str):
         """
         Set datetime
 
         Parameters:
         value (str): datestring
-
-        Returns:
-        Transaction:Returning self
         """
         self.__datetime = value
-        return self
 
     @property
     def activity(self) -> str:
@@ -673,18 +588,14 @@ class Transaction(NodeParent):
         return self.__activity
 
     @activity.setter
-    def activity(self, value: str) -> Transaction:
+    def activity(self, value: str):
         """
         Get activity
 
         Parameters:
         value (str): activity
-
-        Returns:
-        Transaction:Returning self
         """
         self.__activity = value
-        return self
 
     @property
     def directed(self) -> bool:
@@ -697,18 +608,14 @@ class Transaction(NodeParent):
         return self.__directed
 
     @directed.setter
-    def directed(self, value: bool) -> Transaction:
+    def directed(self, value: bool):
         """
         Set directed state
 
         Parameters:
         value (bool): State
-
-        Returns:
-        Transaction:Returning self
         """
         self.__directed = value
-        return self
 
     @property
     def line_style(self) -> str:
@@ -721,18 +628,14 @@ class Transaction(NodeParent):
         return self.__line_style
 
     @line_style.setter
-    def line_style(self, value: str) -> Transaction:
+    def line_style(self, value: str):
         """
         Set line style
 
         Parameters:
         value (str): Style
-
-        Returns:
-        Transaction:Returning self
         """
         self.__line_style = value
-        return self
 
     @property
     def width(self) -> float:
@@ -745,15 +648,11 @@ class Transaction(NodeParent):
         return self.__width
 
     @width.setter
-    def width(self, value: float) -> Transaction:
+    def width(self, value: float):
         """
         Set line width
 
         Parameters:
         value (str): Value
-
-        Returns:
-        Transaction:Returning self
         """
         self.__width = value
-        return self

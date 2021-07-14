@@ -1,5 +1,4 @@
-from kernel.models.node import Node
-from kernel.models.transaction import Transaction
+from kernel.nodes.models import Node, Transaction
 
 import csv
 

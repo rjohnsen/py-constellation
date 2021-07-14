@@ -1,6 +1,6 @@
 from kernel.models.graphcsv import GraphCSV
-from kernel.models.node import Node
-from kernel.models.transaction import Transaction
+
+from kernel.nodes.models import Node, Transaction, NodeParent
 from kernel.constants.transaction import Transaction as TRCon
 from kernel.lib.icons import Icons
 
