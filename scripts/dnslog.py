@@ -1,8 +1,10 @@
 from kernel.models.graphcsv import GraphCSV
 
-from kernel.nodes.models import Node, Transaction, NodeParent
+from kernel.nodes.models import Node, Transaction
 from kernel.constants.transaction import Transaction as TRCon
 from kernel.lib.icons import Icons
+
+from tqdm import tqdm
 
 import ipaddress
 import csv
@@ -16,8 +18,13 @@ def set_icon(ip: str) -> str:
 def run(log_path: str):
     with open(log_path, "r") as log_file:
         graphcsv = GraphCSV()
+        reader = csv.reader(log_file, delimiter="\t")
+        output_filename = "dnslog.csv"
 
-        for line in csv.reader(log_file, delimiter="\t"):
+        print("DNS Log parser DEMO - Roger Johnsen, 2021")
+        print(f"Processing '{log_path}'\n")
+
+        for line in tqdm(reader):
             #
             # Prepare variables for easy access
             # 
@@ -66,7 +73,9 @@ def run(log_path: str):
                 transaction
             )
 
-        graphcsv.write_csv("dnslog.csv")
+        graphcsv.write_csv(output_filename)
+
+        print(f"\nProcessing done and results written to '{output_filename}'!")
 
 if __name__ == "__main__":
     run("logs/dns.log")
