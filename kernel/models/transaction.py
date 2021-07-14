@@ -4,58 +4,55 @@ from kernel.models.nodeparent import NodeParent
 
 class Transaction(NodeParent):
     def __init__(self, annotation: str):
-        super().__init__(
-            annotation,
-            [
-                GraphConstants.DATETIME,
-                GraphConstants.ACTIVITY,
-                GraphConstants.DIRECTED,
-                GraphConstants.LINE_STYLE,
-                GraphConstants.WIDTH
-            ]
-        )
+        super().__init__(annotation)
+
+        self.__datetime = None
+        self.__activity = None
+        self.__directed = None
+        self.__line_style = None
+        self.__width = None
 
     @property
     def datetime(self):
-        return self.structure[graphconstants.DATETIME]
+        return self.__datetime
 
     @datetime.setter
     def datetime(self, value):
-        self.structure[GraphConstants.DATETIME] = value
+        self.__datetime = value
         return self
 
     @property
     def activity(self):
-        return self.structure[graphconstants.ACTIVITY]
+        return self.__activity
 
     @activity.setter
     def activity(self, value: str):
-        self.structure[GraphConstants.ACTIVITY] = value
+        self.__activity = value
         return self
 
     @property
     def directed(self):
-        return self.structure[graphconstants.DIRECTED]
+        return self.__directed
 
     @directed.setter
     def directed(self, value):
-        self.structure[GraphConstants.DIRECTED] = value
+        self.__directed = value
         return self
 
     @property
     def line_style(self):
-        return self.structure[graphconstants.LINE_STYLE]
+        return self.__line_style
 
     @line_style.setter
     def line_style(self, value: str):
-        self.structure[GraphConstants.LINE_STYLE] = value
+        self.__line_style = value
         return self
 
     @property
     def width(self):
-        return self.structure[graphconstants.WIDTH]
+        return self.__width
 
     @width.setter
     def width(self, value):
-        self.structure[GraphConstants.WIDTH] = value
+        self.__width = value
         return self
