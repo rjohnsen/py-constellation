@@ -9,10 +9,16 @@ A demo on how to parse DNS log into Constellation-app supported CSV
 import ipaddress
 import csv
 from tqdm import tqdm
-from kernel.models.graphcsv import GraphCSV
-from kernel.nodes.models import Node, Transaction
-from kernel.constants.transaction import Transaction as TRCon
-from kernel.lib.icons import Icons
+
+from cyberconstellation.nodes import Node, Transaction
+from cyberconstellation.icons import Icons
+from cyberconstellation.transaction import Transaction as TRCon
+from cyberconstellation.graph import GraphCSV
+
+# from kernel.models.graphcsv import GraphCSV
+# from kernel.nodes.models import Node, Transaction
+# from kernel.constants.transaction import Transaction as TRCon
+# from kernel.lib.icons import Icons
 
 def set_icon(ip_addr: str) -> str:
     """

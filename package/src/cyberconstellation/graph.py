@@ -1,4 +1,4 @@
-from kernel.nodes.models import Node, Transaction
+from cyberconstellation.nodes import Node, Transaction
 
 import csv
 
