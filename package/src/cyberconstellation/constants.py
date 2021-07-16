@@ -1,4 +1,6 @@
-# Node Related Constants
+"""
+Constellation related constants. Sourced from GUI and from installation base.
+"""
 
 # Transaction Related Constants
 TRANSACTION_LINE_STYLE_DASHED = "DASHED"

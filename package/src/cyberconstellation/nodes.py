@@ -14,8 +14,10 @@ Constallation-app project.
 """
 
 from __future__ import annotations
-from cyberconstellation.typecheck import typecheck
+
 import re
+
+from cyberconstellation.typecheck import typecheck
 
 # pylint: disable=R0902
 class NodeParent:
@@ -31,7 +33,7 @@ class NodeParent:
         Parameters:
         annotation (str): CSV header prefix
         """
-        
+
         self.__annotation = annotation
         self.__identifier = None
         self.__type = None
@@ -73,7 +75,7 @@ class NodeParent:
         Returns:
         str:Returning value
         """
-        
+
         return getattr(self, name)
 
     def compress(self) -> dict:
@@ -83,7 +85,7 @@ class NodeParent:
         Returns:
         dict:Returning bool
         """
-        
+
         compressed = {}
 
         for key, value in self.__dict__.items():
@@ -138,7 +140,7 @@ class NodeParent:
         Returns:
         str:Returning value
         """
-        
+
         return self.__type
 
     @type.setter
@@ -161,7 +163,7 @@ class NodeParent:
         Returns:
         str:Returning value
         """
-        
+
         return self.__source
 
     @source.setter
@@ -184,7 +186,7 @@ class NodeParent:
         Returns:
         str:Returning Label
         """
-        
+
         return self.__label
 
     @label.setter
@@ -207,7 +209,7 @@ class NodeParent:
         Returns:
         str:Returning value
         """
-        
+
         return self.__color
 
     @color.setter
@@ -219,7 +221,7 @@ class NodeParent:
         Parameters:
         value (str): Color string or HEX code
         """
-        
+
         self.__color = value
 
     @property
@@ -242,7 +244,7 @@ class NodeParent:
         Parameters:
         value (bool): dim on/off
         """
-        
+
         self.__dim = value
 
     @property
@@ -276,7 +278,7 @@ class NodeParent:
         Returns:
         float:Returning value
         """
-        
+
         return self.__visibility
 
     @visibility.setter
@@ -288,7 +290,7 @@ class NodeParent:
         Parameters:
         value (float): Bitmask
         """
-        
+
         self.__visibility = value
 
     @property
@@ -311,7 +313,7 @@ class NodeParent:
         Parameters:
         value (bool): State
         """
-        
+
         self.__selected = value
 
     @property

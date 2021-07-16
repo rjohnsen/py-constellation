@@ -1,8 +1,15 @@
+"""
+Icons module
+
+Holds icons found in installation directory. For use with nodes.
+"""
+
+# pylint: disable=R0903
 class Icons:
     """
     Notes:
         1. Constellation App icons starting with digit is prefixed with 'NS' when
-           naming constants. 'NS' is unique to our Python library and stands for 
+           naming constants. 'NS' is unique to our Python library and stands for
            'Not Specified'.
     """
     NS0020 = "0020"
