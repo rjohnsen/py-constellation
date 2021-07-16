@@ -14,6 +14,7 @@ Constallation-app project.
 """
 
 from __future__ import annotations
+from cyberconstellation.typecheck import typecheck
 import re
 
 # pylint: disable=R0902
@@ -22,6 +23,7 @@ class NodeParent:
     Parent class consolidating properties and methods for graph nodes (both node and transaction).
     """
 
+    @typecheck(str)
     def __init__(self, annotation: str):
         """
         Default constructor
@@ -29,6 +31,7 @@ class NodeParent:
         Parameters:
         annotation (str): CSV header prefix
         """
+        
         self.__annotation = annotation
         self.__identifier = None
         self.__type = None
@@ -51,11 +54,27 @@ class NodeParent:
         Returns:
         str:Returning bool
         """
-        if name in self.__dict__.keys():
-            return False
+
+        for prop, _ in self.__dict__.items():
+            if re.sub(r"(^_[A-Za-z]+__)", "", prop) == name:
+                return False
 
         setattr(self, name, value)
+
         return True
+
+    def get_property(self, name: str):
+        """
+        Get property
+
+        Parameters:
+        name (str): Name of property
+
+        Returns:
+        str:Returning value
+        """
+        
+        return getattr(self, name)
 
     def compress(self) -> dict:
         """
@@ -64,6 +83,7 @@ class NodeParent:
         Returns:
         dict:Returning bool
         """
+        
         compressed = {}
 
         for key, value in self.__dict__.items():
@@ -99,6 +119,7 @@ class NodeParent:
         return self.__identifier
 
     @identifier.setter
+    @typecheck(str)
     def identifier(self, value: str):
         """
         Set node identifer
@@ -106,6 +127,7 @@ class NodeParent:
         Parameters:
         value (str): Identifier
         """
+
         self.__identifier = value
 
     @property
@@ -116,9 +138,11 @@ class NodeParent:
         Returns:
         str:Returning value
         """
+        
         return self.__type
 
     @type.setter
+    @typecheck(str)
     def type(self, value: str):
         """
         Set node identifer
@@ -126,6 +150,7 @@ class NodeParent:
         Parameters:
         value (str): Identifier
         """
+
         self.__type = value
 
     @property
@@ -136,9 +161,11 @@ class NodeParent:
         Returns:
         str:Returning value
         """
+        
         return self.__source
 
     @source.setter
+    @typecheck(str)
     def source(self, value: str):
         """
         Set node source
@@ -146,6 +173,7 @@ class NodeParent:
         Parameters:
         value (str): Source
         """
+
         self.__source = value
 
     @property
@@ -156,9 +184,11 @@ class NodeParent:
         Returns:
         str:Returning Label
         """
+        
         return self.__label
 
     @label.setter
+    @typecheck(str)
     def label(self, value: str):
         """
         Set node label
@@ -166,6 +196,7 @@ class NodeParent:
         Parameters:
         value (str): Label
         """
+
         self.__label = value
 
     @property
@@ -176,9 +207,11 @@ class NodeParent:
         Returns:
         str:Returning value
         """
+        
         return self.__color
 
     @color.setter
+    @typecheck(str)
     def color(self, value: str):
         """
         Set node color
@@ -186,6 +219,7 @@ class NodeParent:
         Parameters:
         value (str): Color string or HEX code
         """
+        
         self.__color = value
 
     @property
@@ -196,9 +230,11 @@ class NodeParent:
         Returns:
         str:Returning value
         """
+
         return self.__dim
 
     @dim.setter
+    @typecheck(bool)
     def dim(self, value: bool):
         """
         Set node dim setting
@@ -206,6 +242,7 @@ class NodeParent:
         Parameters:
         value (bool): dim on/off
         """
+        
         self.__dim = value
 
     @property
@@ -216,9 +253,11 @@ class NodeParent:
         Returns:
         float:Returning value
         """
+
         return self.__layer_mask
 
     @layer_mask.setter
+    @typecheck(float)
     def layer_mask(self, value: float):
         """
         Set node layer_mask (bitmask identifying the layers this node belongs to)
@@ -226,6 +265,7 @@ class NodeParent:
         Parameters:
         value (float): Bitmask
         """
+
         self.__layer_mask = value
 
     @property
@@ -236,9 +276,11 @@ class NodeParent:
         Returns:
         float:Returning value
         """
+        
         return self.__visibility
 
     @visibility.setter
+    @typecheck(float)
     def visibility(self, value: float):
         """
         Get node visibility
@@ -246,6 +288,7 @@ class NodeParent:
         Parameters:
         value (float): Bitmask
         """
+        
         self.__visibility = value
 
     @property
@@ -256,9 +299,11 @@ class NodeParent:
         Returns:
         bool:Returning value
         """
+
         return self.__selected
 
     @selected.setter
+    @typecheck(bool)
     def selected(self, value: bool):
         """
         Set node visibility
@@ -266,6 +311,7 @@ class NodeParent:
         Parameters:
         value (bool): State
         """
+        
         self.__selected = value
 
     @property
@@ -280,6 +326,7 @@ class NodeParent:
         return self.__layer_visibility
 
     @layer_visibility.setter
+    @typecheck(float)
     def layer_visibility(self, value: float):
         """
         Set node visibility given the layer it belongs to
@@ -287,6 +334,7 @@ class NodeParent:
         Parameters:
         value (float): Value
         """
+
         self.__layer_visibility = value
 
 # pylint: disable=R0904,C0103,R0903
@@ -326,6 +374,7 @@ class Node(NodeParent):
         return self.__raw
 
     @raw.setter
+    @typecheck(str)
     def raw(self, value: str) -> Node:
         """
         Set node raw value
@@ -349,6 +398,7 @@ class Node(NodeParent):
         return self.__background_icon
 
     @background_icon.setter
+    @typecheck(str)
     def background_icon(self, value: str):
         """
         Set background icon
@@ -369,6 +419,7 @@ class Node(NodeParent):
         return self.__icon
 
     @icon.setter
+    @typecheck(str)
     def icon(self, value: str):
         """
         Set icon
@@ -389,6 +440,7 @@ class Node(NodeParent):
         return self.__nradius
 
     @nradius.setter
+    @typecheck(float)
     def nradius(self, value: float):
         """
         Get nradius
@@ -409,6 +461,7 @@ class Node(NodeParent):
         return self.__pinned
 
     @pinned.setter
+    @typecheck(bool)
     def pinned(self, value: bool):
         """
         Set pinned state
@@ -429,6 +482,7 @@ class Node(NodeParent):
         return self.__x
 
     @x.setter
+    @typecheck(float)
     def x(self, value: float):
         """
         Set X coordinate
@@ -449,6 +503,7 @@ class Node(NodeParent):
         return self.__x2
 
     @x2.setter
+    @typecheck(float)
     def x2(self, value: float):
         """
         Set X2 coordinate
@@ -469,6 +524,7 @@ class Node(NodeParent):
         return self.__y
 
     @y.setter
+    @typecheck(float)
     def y(self, value: float):
         """
         Set Y coordinate
@@ -489,6 +545,7 @@ class Node(NodeParent):
         return self.__y2
 
     @y2.setter
+    @typecheck(float)
     def y2(self, value: float):
         """
         Set Y2 coordinate
@@ -509,6 +566,7 @@ class Node(NodeParent):
         return self.__z
 
     @z.setter
+    @typecheck(float)
     def z(self, value: float):
         """
         Set Z coordinate
@@ -529,6 +587,7 @@ class Node(NodeParent):
         return self.__z2
 
     @z2.setter
+    @typecheck(float)
     def z2(self, value: float):
         """
         Set Z2 coordinate
@@ -568,6 +627,7 @@ class Transaction(NodeParent):
         return self.__datetime
 
     @datetime.setter
+    @typecheck(str)
     def datetime(self, value: str):
         """
         Set datetime
@@ -588,6 +648,7 @@ class Transaction(NodeParent):
         return self.__activity
 
     @activity.setter
+    @typecheck(str)
     def activity(self, value: str):
         """
         Get activity
@@ -608,6 +669,7 @@ class Transaction(NodeParent):
         return self.__directed
 
     @directed.setter
+    @typecheck(bool)
     def directed(self, value: bool):
         """
         Set directed state
@@ -628,6 +690,7 @@ class Transaction(NodeParent):
         return self.__line_style
 
     @line_style.setter
+    @typecheck(str)
     def line_style(self, value: str):
         """
         Set line style
@@ -648,6 +711,7 @@ class Transaction(NodeParent):
         return self.__width
 
     @width.setter
+    @typecheck(float)
     def width(self, value: float):
         """
         Set line width
