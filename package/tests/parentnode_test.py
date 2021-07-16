@@ -44,8 +44,8 @@ class TestNodeParent(unittest.TestCase):
                 'testparentnode.annotation',
                 'testparentnode.identifier',
                 'testparentnode.label'
-            ],
-            list(compressed.keys())
+            ].sort(),
+            list(compressed.keys()).sort()
         )
 
     def test_add_property_already_existing(self):
