@@ -12,13 +12,9 @@ from tqdm import tqdm
 
 from cyberconstellation.nodes import Node, Transaction
 from cyberconstellation.icons import Icons
-from cyberconstellation.transaction import Transaction as TRCon
 from cyberconstellation.graph import GraphCSV
 
-# from kernel.models.graphcsv import GraphCSV
-# from kernel.nodes.models import Node, Transaction
-# from kernel.constants.transaction import Transaction as TRCon
-# from kernel.lib.icons import Icons
+import cyberconstellation.constants as constants
 
 def set_icon(ip_addr: str) -> str:
     """
@@ -79,8 +75,8 @@ def run(log_path: str):
             transaction = Transaction("trans")
             transaction.label = protocol
             transaction.directed = True
-            transaction.type = "Network"
-            transaction.line_style = TRCon.LINE_STYLE_DOTTED
+            transaction.type = constants.TRANSACTION_TYPE_COMMUNICATION
+            transaction.line_style = constants.TRANSACTION_LINE_STYLE_DASHED
             transaction.color = "green"
 
             # Connect the graph
