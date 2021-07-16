@@ -87,7 +87,7 @@ class NodeParent:
         compressed = {}
 
         for key, value in self.__dict__.items():
-            if value is None:
+            if value in [ None, self.annotation ]:
                 continue
 
             new_key = f"{self.annotation}.{re.sub(r'(^_[A-Za-z]+__)', '', key)}".lower()
