@@ -4,7 +4,6 @@
 *.bak
 *.old
 *.new
-*test*
 env/
 logs/
 __*__/
