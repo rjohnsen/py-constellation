@@ -54,6 +54,3 @@ class TestTransaction(unittest.TestCase):
     def test_prop_line_style_illegal_value(self):
         with self.assertRaises(ValueError):
             self.node.width = 1234
-
-if __name__ == '__main__':
-    unittest.main()

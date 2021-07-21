@@ -147,6 +147,3 @@ class TestNodeParent(unittest.TestCase):
     def test_prop_layer_visibility_illegal_value(self):
         with self.assertRaises(ValueError):
             self.node.layer_visibility = "TESTING"
-    
-if __name__ == '__main__':
-    unittest.main()

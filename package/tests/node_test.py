@@ -108,6 +108,3 @@ class TestNode(unittest.TestCase):
     def test_prop_z2_illegal_value(self):
         with self.assertRaises(ValueError):
             self.node.z2 = 1234
-
-if __name__ == '__main__':
-    unittest.main()
