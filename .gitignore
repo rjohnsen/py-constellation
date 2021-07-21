@@ -9,3 +9,6 @@ logs/
 __*__/
 dist/
 *egg-info/
+test.py
+*.star
+graph.txt

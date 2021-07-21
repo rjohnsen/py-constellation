@@ -16,6 +16,7 @@ Constallation-app project.
 from __future__ import annotations
 
 import re
+import uuid
 
 from cyberconstellation.typecheck import typecheck
 
@@ -35,7 +36,7 @@ class NodeParent:
         """
 
         self.__annotation = annotation
-        self.__identifier = None
+        self.__identifier = str(uuid.uuid4())
         self.__type = None
         self.__source = None
         self.__label = None
@@ -112,7 +113,7 @@ class NodeParent:
     @property
     def identifier(self) -> str:
         """
-        Get node identifer
+        Get node identifier
 
         Returns:
         str:Returning value
@@ -124,7 +125,7 @@ class NodeParent:
     @typecheck(str)
     def identifier(self, value: str):
         """
-        Set node identifer
+        Set node identifier
 
         Parameters:
         value (str): Identifier
@@ -147,7 +148,7 @@ class NodeParent:
     @typecheck(str)
     def type(self, value: str):
         """
-        Set node identifer
+        Set node identifier
 
         Parameters:
         value (str): Identifier
