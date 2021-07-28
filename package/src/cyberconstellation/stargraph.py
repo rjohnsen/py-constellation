@@ -22,16 +22,16 @@ class StarGraph:
         self.edges = []
 
     def append_node(self, src, dst):
-        if not src.identifier in self.nodes.keys():
-            self.nodes[src.identifier] = src
+        if not src.label in self.nodes.keys():
+            self.nodes[src.label] = src
 
-        if not dst.identifier in self.nodes.keys() == False:
-            self.nodes[dst.identifier] = dst
+        if not dst.label in self.nodes.keys() == False:
+            self.nodes[dst.label] = dst
 
         self.edges.append({
             "tx_id_": random.randint(0, int(time.time())),
-            "vx_src_": src.identifier,
-            "vx_dst_": dst.identifier,
+            "vx_src_": self.nodes[src.label].identifier,
+            "vx_dst_": self.nodes[dst.label].identifier,
             "tx_dir_:": True
         })
 

@@ -47,6 +47,8 @@ def run(log_path: str):
         print("DNS Log parser DEMO - Roger Johnsen, 2021")
         print(f"Processing '{log_path}'\n")
 
+        count = 0
+
         for line in tqdm(reader):
             # Prepare variables for easy access
             source_ip = line[2]
@@ -85,6 +87,11 @@ def run(log_path: str):
                 destination_node,
                 transaction
             )
+
+            if count > 2:
+                break
+
+            count += 1
 
         graphcsv.write_csv(output_filename)
 

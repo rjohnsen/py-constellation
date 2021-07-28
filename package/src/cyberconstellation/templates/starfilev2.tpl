@@ -336,15 +336,15 @@
         {
             "vx_id_" : {{node.identifier}},
             "Raw" : {
-                "rawIdentifier" : "{{ node.raw }}",
+                "rawIdentifier" : "Node {{ node.label }}",
                 "rawType" : "Network"
             },
-            "icon" : "{{ node.icon }}",
+            "icon" : "Network.Network",
             "Type" : {
-                "Name" : "{{ node.type }}",
+                "Name" : "Network",
                 "Description" : "A node representing a type which is not currently part of the analytic schema",
                 "Color" : {
-                    "name" : "{{ node.color }}"
+                    "name" : "Grey"
                 },
                 "Foreground Icon" : "Unknown",
                 "Background Icon" : "Background.Flat Square",
@@ -353,11 +353,10 @@
             },
             "x" : {{node.x}},
             "y" : {{node.y}},
-            "z" : {{node.z}},
-            "Label" : "{{ node.label }}",
-            "Identifier" : "{{ node.identifier }}",
+            "Label" : "Node {{ node.label }} <Network>",
+            "Identifier" : "Node {{ node.label }}",
             "color" : {
-                "name" : "{{ node.color }}"
+                "name" : "Grey"
             },
             "Source" : "{{ node.source }}",
             "background_icon" : "Background.Flat Square"
@@ -463,16 +462,16 @@
       "vx_dst_" : {{transaction["vx_dst_"]}},
       "tx_dir_" : true,
       "Label" : "Communication",
-      "Identifier" : {{transaction["tx_id_"]}},
+      "Identifier" : "{{transaction["tx_id_"]}}",
       "color" : {
-        "name" : "Green"
+        "name" : "Emerald"
       },
       "directed" : true,
       "Type" : {
         "Name" : "Communication",
         "Description" : "A transaction representing a communication between two entities, eg. a phone made a call to another phone",
         "Color" : {
-          "name" : "Green"
+          "name" : "Emerald"
         },
         "Style" : "SOLID",
         "Directed" : true,
