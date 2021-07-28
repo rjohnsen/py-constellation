@@ -20,6 +20,9 @@ import uuid
 
 from cyberconstellation.typecheck import typecheck
 
+import random
+import time
+
 # pylint: disable=R0902
 class NodeParent:
     """
@@ -36,7 +39,7 @@ class NodeParent:
         """
 
         self.__annotation = annotation
-        self.__identifier = str(uuid.uuid4())
+        self.__identifier = random.randint(0, int(time.time()))
         self.__type = None
         self.__source = None
         self.__label = None

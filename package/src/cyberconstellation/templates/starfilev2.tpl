@@ -331,116 +331,41 @@
     } ],
     "key" : [ "Identifier", "Type" ]
   }, {
-    "data" : [ {
-      "vx_id_" : 0,
-      "Raw" : {
-        "rawIdentifier" : "Node 192.168.202.100",
-        "rawType" : "Network"
-      },
-      "icon" : "Network.Network",
-      "Type" : {
-        "Name" : "Network",
-        "Description" : "A node representing a type which is not currently part of the analytic schema",
-        "Color" : {
-          "name" : "Grey"
-        },
-        "Foreground Icon" : "Unknown",
-        "Background Icon" : "Background.Flat Square",
-        "Properties" : { },
-        "Incomplete" : false
-      },
-      "x" : -2.375,
-      "y" : -2.375,
-      "Label" : "Node 192.168.202.100<Network>",
-      "Identifier" : "Node 192.168.202.100",
-      "color" : {
-        "name" : "Grey"
-      },
-      "Source" : "Imported",
-      "background_icon" : "Background.Flat Square"
-    }, {
-      "vx_id_" : 1,
-      "Raw" : {
-        "rawIdentifier" : "Node 192.168.27.203",
-        "rawType" : "Network"
-      },
-      "icon" : "Network.Network",
-      "Type" : {
-        "Name" : "Network",
-        "Description" : "A node representing a type which is not currently part of the analytic schema",
-        "Color" : {
-          "name" : "Grey"
-        },
-        "Foreground Icon" : "Unknown",
-        "Background Icon" : "Background.Flat Square",
-        "Properties" : { },
-        "Incomplete" : false
-      },
-      "x" : 2.375,
-      "y" : -2.375,
-      "Label" : "Node 192.168.27.203<Network>",
-      "Identifier" : "Node 192.168.27.203",
-      "color" : {
-        "name" : "Grey"
-      },
-      "Source" : "Imported",
-      "background_icon" : "Background.Flat Square"
-    }, {
-      "vx_id_" : 6,
-      "Raw" : {
-        "rawIdentifier" : "Node 192.168.202.76",
-        "rawType" : "Network"
-      },
-      "icon" : "Network.Network",
-      "Type" : {
-        "Name" : "Network",
-        "Description" : "A node representing a type which is not currently part of the analytic schema",
-        "Color" : {
-          "name" : "Grey"
-        },
-        "Foreground Icon" : "Unknown",
-        "Background Icon" : "Background.Flat Square",
-        "Properties" : { },
-        "Incomplete" : false
-      },
-      "x" : -2.375,
-      "y" : 2.375,
-      "Label" : "Node 192.168.202.76<Network>",
-      "Identifier" : "Node 192.168.202.76",
-      "color" : {
-        "name" : "Grey"
-      },
-      "Source" : "Imported",
-      "background_icon" : "Background.Flat Square"
-    }, {
-      "vx_id_" : 7,
-      "Raw" : {
-        "rawIdentifier" : "Node 192.168.202.255",
-        "rawType" : "Network"
-      },
-      "icon" : "Network.Network",
-      "Type" : {
-        "Name" : "Network",
-        "Description" : "A node representing a type which is not currently part of the analytic schema",
-        "Color" : {
-          "name" : "Grey"
-        },
-        "Foreground Icon" : "Unknown",
-        "Background Icon" : "Background.Flat Square",
-        "Properties" : { },
-        "Incomplete" : false
-      },
-      "x" : 2.375,
-      "y" : 2.375,
-      "Label" : "Node 192.168.202.255<Network>",
-      "Identifier" : "Node 192.168.202.255",
-      "color" : {
-        "name" : "Grey"
-      },
-      "Source" : "Imported",
-      "background_icon" : "Background.Flat Square"
-    } ]
-  } ]
+    "data" : [ 
+        {%- for node in nodes -%}
+        {
+            "vx_id_" : {{node.identifier}},
+            "Raw" : {
+                "rawIdentifier" : "{{ node.raw }}",
+                "rawType" : "Network"
+            },
+            "icon" : "{{ node.icon }}",
+            "Type" : {
+                "Name" : "{{ node.type }}",
+                "Description" : "A node representing a type which is not currently part of the analytic schema",
+                "Color" : {
+                    "name" : "{{ node.color }}"
+                },
+                "Foreground Icon" : "Unknown",
+                "Background Icon" : "Background.Flat Square",
+                "Properties" : { },
+                "Incomplete" : false
+            },
+            "x" : {{node.x}},
+            "y" : {{node.y}},
+            "z" : {{node.z}},
+            "Label" : "{{ node.label }}",
+            "Identifier" : "{{ node.identifier }}",
+            "color" : {
+                "name" : "{{ node.color }}"
+            },
+            "Source" : "{{ node.source }}",
+            "background_icon" : "Background.Flat Square"
+        }, 
+        {%- endfor -%}
+    ]
+  } 
+  ]
 }, {
   "transaction" : [ {
     "attrs" : [ {
@@ -530,96 +455,35 @@
     } ],
     "key" : [ "Identifier", "Type", "DateTime", "Source" ]
   }, {
-    "data" : [ {
-      "tx_id_" : 0,
-      "vx_src_" : 0,
-      "vx_dst_" : 1,
+    "data" : [ 
+      {%- for transaction in transactions -%}
+      {
+      "tx_id_" : {{transaction["tx_id_"]}},
+      "vx_src_" : {{transaction["vx_src_"]}},
+      "vx_dst_" : {{transaction["vx_dst_"]}},
       "tx_dir_" : true,
       "Label" : "Communication",
-      "Identifier" : "e3af31d9-6ae6-4245-b5e8-06d44247308a",
+      "Identifier" : {{transaction["tx_id_"]}},
       "color" : {
-        "name" : "Emerald"
+        "name" : "Green"
       },
       "directed" : true,
       "Type" : {
         "Name" : "Communication",
         "Description" : "A transaction representing a communication between two entities, eg. a phone made a call to another phone",
         "Color" : {
-          "name" : "Emerald"
+          "name" : "Green"
         },
         "Style" : "SOLID",
         "Directed" : true,
         "Properties" : { },
         "Incomplete" : false
       }
-    }, {
-      "tx_id_" : 1,
-      "vx_src_" : 6,
-      "vx_dst_" : 7,
-      "tx_dir_" : true,
-      "Label" : "Communication",
-      "Identifier" : "dd4b6722-fab6-49a9-9d3a-457bad806cd5",
-      "color" : {
-        "name" : "Emerald"
-      },
-      "directed" : true,
-      "Type" : {
-        "Name" : "Communication",
-        "Description" : "A transaction representing a communication between two entities, eg. a phone made a call to another phone",
-        "Color" : {
-          "name" : "Emerald"
-        },
-        "Style" : "SOLID",
-        "Directed" : true,
-        "Properties" : { },
-        "Incomplete" : false
-      }
-    }, {
-      "tx_id_" : 3,
-      "vx_src_" : 6,
-      "vx_dst_" : 7,
-      "tx_dir_" : true,
-      "Label" : "Communication",
-      "Identifier" : "a7ea383e-0f92-49ae-abe1-9b4b5491b8f2",
-      "color" : {
-        "name" : "Emerald"
-      },
-      "directed" : true,
-      "Type" : {
-        "Name" : "Communication",
-        "Description" : "A transaction representing a communication between two entities, eg. a phone made a call to another phone",
-        "Color" : {
-          "name" : "Emerald"
-        },
-        "Style" : "SOLID",
-        "Directed" : true,
-        "Properties" : { },
-        "Incomplete" : false
-      }
-    }, {
-      "tx_id_" : 2,
-      "vx_src_" : 6,
-      "vx_dst_" : 7,
-      "tx_dir_" : true,
-      "Label" : "Communication",
-      "Identifier" : "30d776ee-9aa9-45e9-abcf-673b4a7bd7ae",
-      "color" : {
-        "name" : "Emerald"
-      },
-      "directed" : true,
-      "Type" : {
-        "Name" : "Communication",
-        "Description" : "A transaction representing a communication between two entities, eg. a phone made a call to another phone",
-        "Color" : {
-          "name" : "Emerald"
-        },
-        "Style" : "SOLID",
-        "Directed" : true,
-        "Properties" : { },
-        "Incomplete" : false
-      }
-    } ]
-  } ]
+    },
+    {%- endfor -%}
+    ]
+  } 
+  ]
 }, {
   "meta" : [ {
     "attrs" : [ ]
