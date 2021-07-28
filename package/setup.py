@@ -22,6 +22,10 @@ setuptools.setup(
     ],
     package_dir={"": "src"},
     packages=setuptools.find_packages(where="src"),
+    package_data={"cyberconstellation": ['templates/*.tpl']},
     python_requires=">=3.8.10",
+    install_requires=[
+          'jinja2',
+      ],
 )
 
